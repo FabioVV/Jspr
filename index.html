@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Jspr</title>
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css"
+        />
+
+        <link href="static/css/index.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <article>
+            <main>
+                <section class="main-panel">
+                    <aside>
+                        <div>
+                            <div>
+                                <span id="sy">?</span>
+                                <span id="sx">?</span>
+                            </div>
+                            <!--<div>
+                                <span id="cy"></span>
+                                <span id="cx"></span>
+                            </div>-->
+                        </div>
+                        <div>
+                            <label>Grid item width</label>
+                            <input
+                                oninput="UpdateGridSize()"
+                                type="number"
+                                id="giw"
+                                value="16"
+                            />
+                        </div>
+
+                        <div>
+                            <label>Brush color</label>
+                            <input
+                                type="color"
+                                id="brushc"
+                                value="#fff"
+                                alpha
+                            />
+                        </div>
+
+                        <div>
+                            <label>Background color</label>
+                            <input
+                                type="color"
+                                id="backgroundc"
+                                value="#fff"
+                                alpha
+                                onchange="PaintGrid()"
+                            />
+                        </div>
+
+                        <div>
+                            <label>Grid borders color</label>
+                            <input
+                                type="color"
+                                id="borderc"
+                                value="oklab(50% 0.1 0.1 / 0.5)"
+                                alpha
+                                onchange="PaintGridBorders()"
+                            />
+                        </div>
+
+                        <div>
+                            <label>Reset the panel</label>
+                            <button type="button">Reset</button>
+                        </div>
+                    </aside>
+
+                    <div id="grid-panel" class="grid-panel"></div>
+                </section>
+            </main>
+        </article>
+
+        <script src="static/js/main.js"></script>
+    </body>
+</html>
