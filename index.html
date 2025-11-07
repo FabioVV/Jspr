@@ -16,93 +16,103 @@
     <body>
         <article>
             <main>
+                <div class="title-header">
+                    <h1 class="title">Jspr</h1>
+                    <div>
+                        <span id="sy">?</span>
+                        <span id="sx">?</span>
+                    </div>
+                </div>
                 <section class="main-panel">
                     <aside>
-                        <div>
-                            <h1 class="title">Jspr</h1>
-                        </div>
-                        <div>
+                        <div class="options">
                             <div>
-                                <span id="sy">?</span>
-                                <span id="sx">?</span>
+                                <label>Grid item width:</label>
+                                <input
+                                    oninput="UpdateGridSize()"
+                                    type="number"
+                                    id="giw"
+                                    value="16"
+                                />
                             </div>
-                            <!--<div>
-                                <span id="cy"></span>
-                                <span id="cx"></span>
-                            </div>-->
-                        </div>
-                        <div>
-                            <label>Grid item width:</label>
-                            <input
-                                oninput="UpdateGridSize()"
-                                type="number"
-                                id="giw"
-                                value="16"
-                            />
+
+                            <div>
+                                <label>Brush color:</label>
+                                <input
+                                    type="color"
+                                    id="brushc"
+                                    value="#000000"
+                                    alpha
+                                />
+                            </div>
+
+                            <div>
+                                <label>Background color:</label>
+                                <input
+                                    type="color"
+                                    id="backgroundc"
+                                    value="#ffffff"
+                                    alpha
+                                    onchange="PaintGrid()"
+                                />
+                            </div>
+
+                            <div>
+                                <label>Grid borders color:</label>
+                                <input
+                                    type="color"
+                                    id="borderc"
+                                    value="oklab(50% 0.1 0.1 / 0.5)"
+                                    alpha
+                                    onchange="PaintGridBorders()"
+                                />
+                            </div>
+
+                            <div>
+                                <label>Show grid lines:</label>
+                                <select
+                                    onchange="changeGridLines(this)"
+                                    id="sgl"
+                                >
+                                    <option selected>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div>
-                            <label>Brush color:</label>
-                            <input
-                                type="color"
-                                id="brushc"
-                                value="#000000"
-                                alpha
-                            />
-                        </div>
+                        <div class="actions">
+                            <div>
+                                <button
+                                    style="
+                                        color: #000000;
+                                        background-color: #ffffff;
+                                        padding: 0.5rem;
+                                        cursor: pointer;
+                                        border-right: 0px !important;
+                                        height: 30px;
+                                    "
+                                    onclick="resetPanel()"
+                                    type="button"
+                                >
+                                    Reset
+                                </button>
+                            </div>
 
-                        <div>
-                            <label>Background color:</label>
-                            <input
-                                type="color"
-                                id="backgroundc"
-                                value="#ffffff"
-                                alpha
-                                onchange="PaintGrid()"
-                            />
-                        </div>
-
-                        <div>
-                            <label>Grid borders color:</label>
-                            <input
-                                type="color"
-                                id="borderc"
-                                value="oklab(50% 0.1 0.1 / 0.5)"
-                                alpha
-                                onchange="PaintGridBorders()"
-                            />
-                        </div>
-
-                        <div>
-                            <label>Show grid lines:</label>
-                            <select onchange="changeGridLines(this)" id="sgl">
-                                <option selected>Yes</option>
-                                <option>No</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label>Reset the panel:</label>
-                            <button onclick="resetPanel()" type="button">
-                                Reset
-                            </button>
-                        </div>
-
-                        <br />
-                        <div>
-                            <label></label>
-                            <button
-                                style="
-                                    color: #000000;
-                                    background-color: #ffffff;
-                                    padding: 1rem;
-                                    cursor: pointer;
-                                "
-                                onclick="saveSketch()"
-                                type="button"
-                            >
-                                Save sketch
-                            </button>
+                            <div>
+                                <button
+                                    style="
+                                        color: #000000;
+                                        background-color: #ffffff;
+                                        padding: 0.5rem;
+                                        cursor: pointer;
+                                        height: 30px;
+                                    "
+                                    onclick="saveSketch()"
+                                    type="button"
+                                >
+                                    Save
+                                </button>
+                            </div>
                         </div>
                     </aside>
 
