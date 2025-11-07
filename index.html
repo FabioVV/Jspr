@@ -87,13 +87,73 @@
                                 Reset
                             </button>
                         </div>
+
+                        <br />
+                        <div>
+                            <label></label>
+                            <button
+                                style="
+                                    color: #000000;
+                                    background-color: #ffffff;
+                                    padding: 1rem;
+                                    cursor: pointer;
+                                "
+                                onclick="saveSketch()"
+                                type="button"
+                            >
+                                Save sketch
+                            </button>
+                        </div>
                     </aside>
 
-                    <div id="grid-panel" class="grid-panel"></div>
+                    <div class="grid-container">
+                        <input
+                            style="text-align: center"
+                            type="text"
+                            id="filename"
+                            value="untitled"
+                        />
+                        <div id="grid-panel" class="grid-panel"></div>
+                    </div>
                 </section>
             </main>
         </article>
 
+        <dialog id="saveDialog">
+            <form method="dialog">
+                <section>
+                    <div>
+                        <label>Save with panel borders?</label>
+                        <select id="swpb">
+                            <option>Yes</option>
+                            <option selected>No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Save with grid lines?</label>
+                        <select id="swgl">
+                            <option>Yes</option>
+                            <option selected>No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Save with a transparent background?</label>
+                        <select id="stb">
+                            <option>Yes</option>
+                            <option selected>No</option>
+                        </select>
+                    </div>
+                </section>
+                <menu>
+                    <button onclick="closeModal()" id="cancel" type="reset">
+                        Cancel
+                    </button>
+                    <button type="button" onclick="genImage()">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+
         <script src="static/js/main.js"></script>
+        <script src="static/js/html2canvas.min.js"></script>
     </body>
 </html>

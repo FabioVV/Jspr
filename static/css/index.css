@@ -7,6 +7,12 @@ body {
     margin-right: auto;
 }
 
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 .main-panel {
     display: flex;
     flex-direction: row;

@@ -3,5 +3,5 @@
 Pronounced 'Jasper', is a web based application for pixel art sketches
 
 
-- Pure Javascript (Fow now)
+- Uses html2canvas for sketch saving
 - Css by [Terminal CSS](https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css)

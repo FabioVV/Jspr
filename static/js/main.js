@@ -112,3 +112,65 @@ const changeGridLines = (select) => {
     gridItems.forEach((i) => i.classList.remove("borderless"));
   }
 };
+
+const saveSketch = () => {
+  const dialog = document.getElementById("saveDialog");
+  if (dialog) dialog.showModal();
+};
+
+const closeModal = () => {
+  const dialog = document.getElementById("saveDialog");
+  if (dialog) dialog.close();
+};
+
+const genImage = () => {
+  const gpanel = document.getElementById("grid-panel");
+  const gridItems = Array.from(gpanel.getElementsByClassName("grid-item"));
+
+  const filename = document.getElementById("filename")?.value ?? "untitled";
+
+  const panelBorders = document.getElementById("swpb")?.value;
+  const gridLines = document.getElementById("swgl")?.value;
+  const transparentBg = document.getElementById("stb")?.value;
+
+  const html2canvasOptions = { useCORS: true };
+
+  if (transparentBg === "Yes") {
+    html2canvasOptions["backgroundColor"] = null;
+  }
+
+  if (panelBorders === "No") {
+    gpanel.style.borderWidth = "0px";
+  } else {
+    gpanel.style.borderWidth = "1px";
+  }
+
+  if (gridLines === "Yes") {
+    gridItems.forEach((i) => i.classList.remove("borderless"));
+  } else {
+    gridItems.forEach((i) => i.classList.add("borderless"));
+  }
+
+  try {
+    html2canvas(gpanel, html2canvasOptions)
+      .then((canvas) => {
+        canvas.toBlob((blob) => {
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = `${filename}.png`;
+          link.click();
+          URL.revokeObjectURL(link.href);
+        });
+      })
+      .catch((err) => console.error("html2canvas error:", err));
+  } catch (e) {
+    console.log(e);
+    alert(`An error occured: ${e}`);
+  } finally {
+    // Reset to what the values were before
+    changeGridLines(document.getElementById("sgl"));
+    gpanel.style.borderWidth = "1px";
+
+    closeModal();
+  }
+};
