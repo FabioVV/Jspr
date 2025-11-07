@@ -16,8 +16,18 @@ body {
 
 .grid-panel {
     display: grid;
+    border: 1px solid black;
 }
 
 .grid-item {
     border: 1px solid black;
+}
+
+.borderless {
+    border: none !important;
+}
+
+.title {
+    font-style: italic;
+    text-decoration: underline;
 }

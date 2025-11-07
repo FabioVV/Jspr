@@ -51,7 +51,9 @@ const PaintGridBorders = () => {
   const borderc = document.getElementById("borderc");
 
   try {
-    gpanel.style.borderColor = borderc.value;
+    Array.from(gpanel.getElementsByClassName("grid-item")).forEach((i) => {
+      i.style.borderColor = borderc.value;
+    });
   } catch {
     alert("Please, provide a color for the grid border");
   }
@@ -77,4 +79,36 @@ const GetMousePosAndPaintGridItems = (ev) => {
   if (!cell) return;
 
   cell.style.backgroundColor = brushc.value;
+};
+
+const resetPanel = () => {
+  const gpanel = document.getElementById("grid-panel");
+  let giw = document.getElementById("giw");
+  const brushc = document.getElementById("brushc");
+  const borderc = document.getElementById("borderc");
+  const backgroundc = document.getElementById("backgroundc");
+
+  if (gpanel) {
+    gpanel.style.backgroundColor = "white";
+    Array.from(gpanel.getElementsByClassName("grid-item")).forEach((i) => {
+      i.style.backgroundColor = "white";
+    });
+
+    giw.value = "16";
+    brushc.value = "#000000";
+    borderc.value = "#000000";
+    backgroundc.value = "#ffffff";
+    UpdateGridSize();
+  }
+};
+
+const changeGridLines = (select) => {
+  const gpanel = document.getElementById("grid-panel");
+  const gridItems = Array.from(gpanel.getElementsByClassName("grid-item"));
+
+  if (select.value === "No") {
+    gridItems.forEach((i) => i.classList.add("borderless"));
+  } else {
+    gridItems.forEach((i) => i.classList.remove("borderless"));
+  }
 };
